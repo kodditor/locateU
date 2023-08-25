@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 import atlasPlugin from 'mongoose-atlas-search';
 
-const connection = await mongoose.connect(process.env.MONGO_URI)
+const connection = await mongoose.connect(process.env.CLOUD_MONGO_URI)
 
 const documentScheme = new mongoose.Schema(
     {
