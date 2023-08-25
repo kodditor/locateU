@@ -6,13 +6,27 @@ module.exports = {
     './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
+    colors: {
+      'blue': '#004cff',
+      'lightBlue': '#004cff59',
+      'transparent': 'transparent',
+      'white': '#ffffff',
+      'black': '#000000',
+      'lightGrey': "#fcfcfc",
+      'red' : '#ff0000'
+    },
     extend: {
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
+      gridTemplateColumns: {
+        'search': '0.7fr 0.3fr'
+      }
     },
   },
-  plugins: [],
+  plugins: [
+    require('tailwind-scrollbar')
+  ],
 }
