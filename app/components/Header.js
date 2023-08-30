@@ -1,10 +1,10 @@
 
 
-export default function Header({onlyLogo})
+export default function Header({onlyLogo, centered})
 {
     return(
         <>
-        <div className="flex flex-row justify-between ml-5 mr-5 md:ml-10 md:mr-10 pt-4">
+        <div className={`flex flex-row ${(centered)? "justify-center": "justify-between"} ml-5 mr-5 md:ml-10 md:mr-10 pt-4`}>
             <div className="w-32 md:w-48 flex items-center">
                 <a href="/"><img src={'/img/logo.png'} /></a>
             </div>
