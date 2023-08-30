@@ -11,3 +11,15 @@ export function removeSpaces(string)
     }
     
 }
+
+export function verifyAdmin(adminEmail)
+{   
+    
+    // Will outsource this to prod in the future.
+
+    const allowedEmails = [
+        "kobbyowusudarko@gmail.com"
+    ] 
+
+    return allowedEmails.includes(adminEmail)
+}
