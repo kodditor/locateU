@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@kinde-oss/kinde-auth-nextjs": "^1.8.11",
+    "@vercel/analytics": "^1.0.2",
     "autoprefixer": "10.4.14",
     "leaflet": "^1.9.4",
     "mongoose": "^7.4.2",
