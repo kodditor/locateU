@@ -48,7 +48,7 @@ export default function RequestALocation()
     return (
         <main className="bg-lightGrey">
             <Popup />
-            <Header onlyLogo={true}/>
+            <Header onlyLogo={true} centered={true}/>
             <div className="h-[calc(100vh-130px-4rem)] mx-8 md:mx-10 my-8 py-10 flex flex-row gap-4 bg-white rounded-3xl p-4 md:p-8">
 
                 {!responseSent && <div className="w-full" >

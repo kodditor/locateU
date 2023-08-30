@@ -1,11 +1,10 @@
 'use client'
+
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Popup, { changePopup } from "../components/Popup";
 import { useState } from "react";
 import { currDate } from "../utils/custom-date";
-
-
 
 export default function Contact()
 {
@@ -14,7 +13,7 @@ export default function Contact()
     function handleSubmit(e)
     {
         e.preventDefault()
-        
+    
         changeSent(true)
 
         const today = new Date()
@@ -40,6 +39,7 @@ export default function Contact()
                 changePopup("We've recieved your request.")
             }
         })
+        
     }
 
 
@@ -47,9 +47,8 @@ export default function Contact()
     return (
         <main className="bg-lightGrey">
             <Popup />
-            <Header onlyLogo={true}/>
+            <Header onlyLogo={true} centered={true} />
             <div className="h-[calc(100vh-130px-4rem)] mx-8 md:mx-10 my-8 py-10 flex flex-row gap-8 bg-white rounded-3xl p-4 md:p-8">
-
                 {!responseSent && <div className="w-full"><p className="text-black w-full md:w-[calc(80%)] font-semibold text-[45px] md:text-[65px] md:ml-5">Let's get in contact!</p>
                 <form className="mt-4 md:mt-auto flex flex-col gap-4" onSubmit={handleSubmit}>
                     <span className="w-full md:w-[500px] flex flex-col md:flex-row gap-4">
