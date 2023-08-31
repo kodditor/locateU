@@ -68,13 +68,13 @@ export function LocationView({ activeLocation, pageURL })
                     <p className="text-blue font-medium text-[25px] md:text-[35px]">{activeLocation.title}</p>
                     <p className=" opacity-50 text-[12px] md:text-sm">{activeLocation.lat.slice(0, 9) }, {activeLocation.long.slice(0, 9)}</p>
                     <div className="flex flex-row w-full max-w-[320px] scrollbar-thin scrollbar-track-lightBlue overflow-x-auto">
-                        {(activeLocation.rooms != [])? activeLocation.rooms.map((room, index) => {return(<div key={index} className="px-3 md:px-4 py-1 md:py-2 mt-2 md:mt-4 bg-lightBlue text-blue rounded-full mr-4 font-medium pointer-events-none">{room}</div>)}) : null}
+                        {(activeLocation.rooms != [])? activeLocation.rooms.map((room, index) => {return(<div key={index} className="px-3 md:px-4 py-1 md:py-2 mt-2 md:mt-4 bg-lightGrey text-blue text-sm rounded-full mr-3 md:mr-4 md:font-medium pointer-events-none border-[1px] border-blue">{room}</div>)}) : null}
                     </div>
-                    <p className="mt-4 font-semibold">{activeLocation.type_desc ? activeLocation.type_desc: 'Building'} in the {activeLocation.uni ? activeLocation.uni: 'University of Ghana'} </p>
-                    <p className="mt-4">{activeLocation.description ? activeLocation.description: 'No description.'} </p>
+                    <p className="mt-2 md:mt-4 font-semibold">{activeLocation.type_desc ? activeLocation.type_desc: 'Building'} in the {activeLocation.uni ? activeLocation.uni: 'University of Ghana'} </p>
+                    <p className="mt-1 md:mt-4">{activeLocation.description ? activeLocation.description: 'No description.'} </p>
                 </span>
-                <span className="flex flex-row gap-2 md:gap-4">
-                    <a className="basis-3/5 md:basis-3/4" target="_blank" href={generateDirectionsLink(`${activeLocation.lat},${activeLocation.long}`)}><button className="bg-blue text-white text-[15px] md:text-base w-full flex flex-row-reverse gap-3 md:gap-6 items-center font-semibold px-2 md:px-4 py-3 rounded-full hover:bg-transparent hover:text-blue duration-150 border-2" onMouseEnter={(e)=>{e.target.children[0].src='/img/arrow-t-r-b.png'}} onMouseLeave={(e)=>{e.target.children[0].src='/img/arrow-t-r-w.png'}}><img src="/img/arrow-t-r-w.png"  className="w-5 h-5 mr-2 md:mr-4" /> Get Directions</button></a>
+                <span className="flex flex-row mt-2 md:mt-0 md:gap-4">
+                    <a className="basis-3/5 md:basis-3/4" target="_blank" href={generateDirectionsLink(`${activeLocation.lat},${activeLocation.long}`)}><button className="bg-blue text-white text-[15px] md:text-base w-full flex flex-row-reverse md:gap-4 items-center font-semibold px-2 md:px-4 py-3 rounded-full hover:bg-transparent hover:text-blue duration-150 border-2" onMouseEnter={(e)=>{e.target.children[0].src='/img/arrow-t-r-b.png'}} onMouseLeave={(e)=>{e.target.children[0].src='/img/arrow-t-r-w.png'}}><img src="/img/arrow-t-r-w.png"  className="w-5 h-5 mr-2 md:mr-4" /> <span className="mr-2 md:mr-0">Get Directions</span></button></a>
                     <button className="basis-2/5 flex justify-center items-center opacity-70 text-black text-[15px] md:text-base font-medium hover:text-blue duration-150" onClick={() => shareText("https://locateu.vercel.app/location/" + activeLocation._id)}>Copy Link</button>
                 </span>
             </div>
@@ -105,8 +105,8 @@ export default function Location(props)
     return(
         <main className="bg-white">
             <Popup />
-            <Header />
-            <div className=" flex md:grid flex-col md:grid-cols-search w-[90%] md:w-[calc(100%-8rem)] h-[80vh] md:h-[80vh] m-auto mt-8 mb-[calc(10vh-4rem)] md:mx-14 md:py-8 md:gap-8">
+            <Header searchBar={true}/>
+            <div className=" flex md:grid flex-col md:grid-cols-search w-[90%] md:w-[calc(100%-8rem)] h-[80vh] min-h-[620px] m-auto mt-5 mb-[calc(10vh-4rem)] md:mx-14 md:py-8 md:gap-8">
                 <MapView locationData={activeLocation} />
                 <div  className=" flex flex-col justify-between border-2 border-lightBlue mt-[-1.5rem] md:mt-auto p-5 md:p-8 md:h-[calc(80vh-4rem)] h-[45%] bg-white md:bg-transparent rounded-2xl md:rounded-3xl">
                     <LocationView activeLocation={activeLocation} pageURL = {asPath} />
