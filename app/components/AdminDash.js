@@ -68,7 +68,6 @@ function AddLocation()
                     desc: dataCollection.desc.value,
                     rooms: formattedRooms,
                     tags: formattedTags,
-                    createdAt: currDate()
                 })
             }
             )
