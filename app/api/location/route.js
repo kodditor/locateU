@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server'
 import { getMongoModel } from '@/app/components/MongoC';
+import { currDate } from '@/app/utils/custom-date';
 
 export async function GET(request) {
     const { searchParams } = new URL(request.url)
@@ -38,9 +39,11 @@ export async function POST(request)
 {
     const data = await request.json()
 
+    data.createdAt = currDate()
+
     const mongoModel = await getMongoModel()
 
-    console.log(mongoModel.insertMany(data))
+    //console.log(mongoModel.insertMany(data))
 
     console.log(data)
     return new NextResponse(JSON.stringify({status: 200}))
