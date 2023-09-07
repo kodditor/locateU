@@ -31,7 +31,7 @@ export function MapView({ locationData })
         const mapFrame = generateMapFrame(lat, long);
         
         return (
-            <div className="rounded-t-2xl md:rounded-2xl h-[60%] md:h-auto overflow-hidden border-2 border-lightBlue" dangerouslySetInnerHTML={{__html: mapFrame}}></div>
+            <div className="md:basis-1/2 rounded-t-2xl md:rounded-2xl h-[60%] md:h-auto overflow-hidden border-2 border-lightBlue" dangerouslySetInnerHTML={{__html: mapFrame}}></div>
         )   
     }
     else
@@ -67,8 +67,8 @@ export function LocationView({ activeLocation, pageURL })
                 <span>
                     <p className="text-blue font-medium text-[25px] md:text-[35px]">{activeLocation.title}</p>
                     <p className=" opacity-50 text-[12px] md:text-sm">{activeLocation.lat.slice(0, 9) }, {activeLocation.long.slice(0, 9)}</p>
-                    <div className="flex flex-row w-full max-w-[320px] scrollbar-thin scrollbar-track-lightBlue overflow-x-auto">
-                        {(activeLocation.rooms != [])? activeLocation.rooms.map((room, index) => {return(<div key={index} className="px-3 md:px-4 py-1 md:py-2 mt-2 md:mt-4 bg-lightGrey text-blue text-sm rounded-full mr-3 md:mr-4 md:font-medium pointer-events-none border-[1px] border-blue">{room}</div>)}) : null}
+                    <div className="flex flex-row w-full max-w-[320px] md:scrollbar-thin scrollbar-track-lightBlue overflow-x-auto">
+                        {(activeLocation.rooms != [])? activeLocation.rooms.map((room, index) => {return(<div key={index} className=" whitespace-nowrap px-3 md:px-4 py-1 md:py-2 mt-2 md:mt-4 bg-lightGrey text-blue text-sm rounded-full mr-3 md:mr-4 last:mr-0 md:font-medium pointer-events-none border-[1px] border-blue">{room}</div>)}) : null}
                     </div>
                     <p className="mt-2 md:mt-4 font-semibold">{activeLocation.type_desc ? activeLocation.type_desc: 'Building'} in the {activeLocation.uni ? activeLocation.uni: 'University of Ghana'} </p>
                     <p className="mt-1 md:mt-4">{activeLocation.description ? activeLocation.description: 'No description.'} </p>
@@ -108,7 +108,7 @@ export default function Location(props)
             <Header searchBar={true}/>
             <div className=" flex md:grid flex-col md:grid-cols-search w-[90%] md:w-[calc(100%-8rem)] h-[80vh] min-h-[620px] m-auto mt-5 mb-[calc(10vh-4rem)] md:mx-14 md:py-8 md:gap-8">
                 <MapView locationData={activeLocation} />
-                <div  className=" flex flex-col justify-between border-2 border-lightBlue mt-[-1.5rem] md:mt-auto p-5 md:p-8 md:h-[calc(80vh-4rem)] h-[45%] bg-white md:bg-transparent rounded-2xl md:rounded-3xl">
+                <div  className="md:basis-1/2 flex flex-col justify-between border-2 border-lightBlue mt-[-1.5rem] md:mt-auto p-5 md:p-8 md:h-[calc(80vh-4rem)] h-[45%] bg-white md:bg-transparent rounded-2xl md:rounded-3xl">
                     <LocationView activeLocation={activeLocation} pageURL = {asPath} />
                 </div>
             </div>
