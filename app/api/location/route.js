@@ -39,12 +39,10 @@ export async function POST(request)
 {
     const data = await request.json()
 
-    data.createdAt = currDate()
-
     const mongoModel = await getMongoModel()
 
-    //console.log(mongoModel.insertMany(data))
+    mongoModel.insertMany(data)
 
-    console.log(data)
+    console.log(data.title + " added to DB")
     return new NextResponse(JSON.stringify({status: 200}))
 }
