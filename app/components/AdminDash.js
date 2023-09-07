@@ -38,6 +38,7 @@ function DashView({mongoData, approvalNum}){
 
 function AddLocation()
 {
+    const router = useRouter()
 
     const [dataCollection, setData] = useState(null)
     const [similarIDSearchResults, setSimilarID] = useState(null)
@@ -76,6 +77,7 @@ function AddLocation()
                 if (data.status == 200)
                 {
                     changePopup( dataCollection.title.value + " Added")
+                    setTimeout(()=>router.push("/admin"), 3000)
                 }
                 else{
                     changePopup("An error occurred")
@@ -151,8 +153,8 @@ function AddLocation()
                     </span>
                     <input  className="mt-4 duration-150 text-blue text-[18px] rounded-md px-4 py-2 border-2 border-lightBlue border-solid active:border-blue"  type="text" name="desc" placeholder="Brief description" defaultValue={(params.get('desc'))? params.get('desc') : null} autoComplete="false" />
                     <input  className="mt-4 duration-150 text-blue text-[18px] rounded-md px-4 py-2 border-2 border-lightBlue border-solid active:border-blue"  type="text" name="rooms" placeholder="Room names (separated by a comma)" defaultValue={(params.get('rooms'))? params.get('rooms') : null} required autoComplete='false'/> 
-                    <div className="flex flex-row-reverse gap-8 w-full mt-8">
-                        
+                    <div className="flex justify-between w-full mt-8">
+                        <a href="https://google.com/maps" target={"_blank"}><div className="bg-lightGrey text-blue w-full max-w-[200px] font-semibold px-4 py-3 rounded-full hover:bg-blue hover:text-white duration-150 border-2">Open Google Maps</div></a>
                         <span  className="flex flex-row-reverse gap-4 items-center">
 
                             <button className="bg-blue text-white w-full max-w-[200px] font-semibold px-4 py-3 rounded-full hover:bg-transparent hover:text-blue duration-150 border-2" onClick={()=>setData(null)}>Add Location</button>
@@ -276,7 +278,7 @@ function EditView({mongoData})
                 changePopup("An error occurred")
             }
         })
-        console.log(changesObj);
+        //console.log(changesObj);
     }
 
     return (
