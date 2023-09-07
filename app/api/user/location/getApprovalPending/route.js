@@ -25,6 +25,6 @@ export async function GET(request) {
     }
 
     //console.log(id)
-    console.log(results)
+    //console.log(results)
     return new NextResponse(JSON.stringify(results))
 }
