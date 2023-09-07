@@ -22,7 +22,7 @@ module.exports = {
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
       gridTemplateColumns: {
-        'search': '0.7fr 0.3fr'
+        'search': '2fr 1fr'
       }
     },
   },
