@@ -9,22 +9,22 @@ import { removeSpaces } from "../utils/backend-utils"
 function DashView({mongoData, approvalNum}){
     return (
         <>
-            <div>
+            <div className="min-h-[620px]">
                 <p className="text-[30px] text-black">Dashboard</p>
                 {!mongoData && <p className="mt-4 text-[20px] text-blue"> Loading Data...</p>}
-                {mongoData && <div className="mt-8 text-[20px] text-black">
-                    <span className=" flex w-full flex-row gap-8">
-                        <div className="basis-1/2 bg-lightBlue rounded-2xl flex flex-row gap-8 overflow-hidden p-5 items-center"><p className="text-blue ml-4 text-[60px]">{mongoData.length}</p> <p className="text-[30px]">Total Locations</p></div>
-                        <div className="basis-1/2 bg-lightGrey rounded-2xl flex flex-row gap-8 overflow-hidden p-5 items-center"><p className="text-red ml-4 text-[60px]">{(approvalNum? approvalNum : 0)}</p> <p className="text-[30px]"> Pending Location approval{(approvalNum > 1 || approvalNum == 0)? "s" : null}</p></div>
+                {mongoData && <div className="mt-4 md:mt-8 text-[20px] text-black">
+                    <span className=" flex w-full flex-col md:flex-row gap-4 md:gap-8">
+                        <div className="basis-1/2 bg-lightBlue rounded-2xl flex flex-row gap-8 overflow-hidden p-3 md:p-5 items-center"><p className="text-blue ml-2 md:ml-4 text-[40px] md:text-[60px]">{mongoData.length}</p> <p className="text-[25px] md:text-[30px]">Total Locations</p></div>
+                        <div className="basis-1/2 bg-lightGrey rounded-2xl flex flex-row gap-8 overflow-hidden p-3 md:p-5 items-center"><p className="text-red ml-2 md:ml-4 text-[40px] md:text-[60px]">{(approvalNum? approvalNum : 0)}</p> <p className=" text-[25px] md:text-[30px]"> Pending Location approval{(approvalNum > 1 || approvalNum == 0)? "s" : null}</p></div>
                     </span>
                     <span className="bg-lightGrey block h-[calc(50vh-140px)] mt-8 overflow-y-scroll scrollbar-thin scrollbar-thumb-lightBlue">
                         {mongoData.map((d, index) => {
                             return (
                                 <a href={`/location/${d._id}`} key={index} className="bg-white flex flex-row items-center text-black border-lightBlue border-2 rounded-md mb-4 last:mb-0 p-4 shadow-sm hover:bg-lightBlue duration-150 cursor-pointer">
                                     <img src="/img/building.png" className="border-2 border-lightBlue mr-4 rounded-full w-10 h-10 overflow-hidden bg-white"/>
-                                    <p className="text-[18px]">{d.title}</p> 
-                                    <p className="ml-8 text-black opacity-50    ">{d._id}</p>
-                                    <p className="ml-8 text-black opacity-50">{d.createdAt}</p>
+                                    <p className=" text-[16px] md:text-[18px]">{d.title}</p> 
+                                    <p className="ml-2 md:ml-8 text-black opacity-50 text-[15px] ">{d._id}</p>
+                                    <p className="ml-2 md:ml-8 text-black text-[15px] opacity-50">{d.createdAt}</p>
                                 </a>
                             )
                         })}
@@ -133,19 +133,19 @@ function AddLocation()
                     { (!dataCollection) && <span></span> }
                 </dialog>
                 <p className="text-[30px] text-black">Add a new Location</p>
-                <form onSubmit={handleSubmit} className="flex flex-col">
-                    <span className="flex flex-row gap-8 mt-8">
-                        <input  className="basis-1/2 duration-150 text-blue text-[18px] rounded-md px-4 py-2 border-2 border-lightBlue border-solid active:border-blue" type="text" name="title" placeholder="Title" defaultValue={(params.get('title')) ? params.get('title') : null} required autoComplete='false'/>
+                <form onSubmit={handleSubmit} className="flex flex-col mt-4 group-[formElements]:mt-4">
+                    <span className="flex flex-col md:flex-row gap-4 md:gap-8 mt-4">
+                        <input  className="formElements basis-1/2 duration-150 text-blue text-[18px] rounded-md px-4 py-2 border-2 border-lightBlue border-solid active:border-blue" type="text" name="title" placeholder="Title" defaultValue={(params.get('title')) ? params.get('title') : null} required autoComplete='false'/>
                         <input  className="basis-1/4 duration-150 text-blue text-[18px] rounded-md px-4 py-2 border-2 border-lightBlue border-solid active:border-blue" type="text" name="_id" placeholder="Unique ID" defaultValue={(params.get('_id')) ? params.get('_id') : null} required autoComplete='false' />
                         <input  className="basis-1/4 duration-150 text-blue text-[18px] rounded-md px-4 py-2 border-2 border-lightBlue border-solid active:border-blue" type="text" name="tags" placeholder="Search tags" defaultValue={(params.get('tags')) ? params.get('tags') : null} required autoComplete='false' />                    
                     </span>
                     
-                    <span className="flex flex-row gap-8 mt-4">
-                        <input  className="basis-1/2 duration-150 text-blue text-[18px] rounded-md px-4 py-2 border-2 border-lightBlue border-solid active:border-blue"  type="number" name="lat" step="any" placeholder="Latitude Coordinate" defaultValue={(params.get('lat'))? params.get('lat') : null} required autoComplete='false'/>
-                        <input  className="basis-1/2 duration-150 text-blue text-[18px] rounded-md px-4 py-2 border-2 border-lightBlue border-solid active:border-blue"  type="number" name="long" step="any" placeholder="Longitude Coordinate" defaultValue={(params.get('long'))? params.get('long') : null} required autoComplete='false'/>
+                    <span className="flex flex-row gap-4 md:gap-8 mt-4">
+                        <input  className=" w-full md:basis-1/2 duration-150 text-blue text-[18px] rounded-md px-4 py-2 border-2 border-lightBlue border-solid active:border-blue"  type="number" name="lat" step="any" placeholder="Latitude Coordinate" defaultValue={(params.get('lat'))? params.get('lat') : null} required autoComplete='false'/>
+                        <input  className="w-full md:basis-1/2 duration-150 text-blue text-[18px] rounded-md px-4 py-2 border-2 border-lightBlue border-solid active:border-blue"  type="number" name="long" step="any" placeholder="Longitude Coordinate" defaultValue={(params.get('long'))? params.get('long') : null} required autoComplete='false'/>
                     </span>
                     
-                    <span className="flex flex-row gap-8  mt-4">
+                    <span className="flex flex-col md:flex-row gap-4 md:gap-8 mt-4">
                         <select  className="basis-1/2 duration-150 text-blue text-[18px] rounded-md px-4 py-2 border-2 border-lightBlue border-solid active:border-blue"  required name="type" defaultValue={'Type of structure'}>
                             <option>Building</option>
                         </select>
@@ -153,9 +153,9 @@ function AddLocation()
                     </span>
                     <input  className="mt-4 duration-150 text-blue text-[18px] rounded-md px-4 py-2 border-2 border-lightBlue border-solid active:border-blue"  type="text" name="desc" placeholder="Brief description" defaultValue={(params.get('desc'))? params.get('desc') : null} autoComplete="false" />
                     <input  className="mt-4 duration-150 text-blue text-[18px] rounded-md px-4 py-2 border-2 border-lightBlue border-solid active:border-blue"  type="text" name="rooms" placeholder="Room names (separated by a comma)" defaultValue={(params.get('rooms'))? params.get('rooms') : null} required autoComplete='false'/> 
-                    <div className="flex justify-between w-full mt-8">
+                    <div className="flex flex-col-reverse md:flex-row items-center md:items-baseline justify-between w-full mt-5 md:mt-8">
                         <a href="https://google.com/maps" target={"_blank"}><div className="bg-lightGrey text-blue w-full max-w-[200px] font-semibold px-4 py-3 rounded-full hover:bg-blue hover:text-white duration-150 border-2">Open Google Maps</div></a>
-                        <span  className="flex flex-row-reverse gap-4 items-center">
+                        <span  className=" mb-4 md:mb-0 flex flex-row-reverse gap-4 items-center">
 
                             <button className="bg-blue text-white w-full max-w-[200px] font-semibold px-4 py-3 rounded-full hover:bg-transparent hover:text-blue duration-150 border-2" onClick={()=>setData(null)}>Add Location</button>
                             <div className=" basis-1/4 flex justify-center items-center text-red bg-lightGrey w-full max-w-[200px] px-4 py-3 rounded-full font-medium hover:text-white hover:bg-red duration-150 cursor-pointer" ><a href="/admin">Cancel</a></div>
@@ -198,7 +198,7 @@ function RemoveLocation() {
                         </span>
                     </span>
             </dialog>
-            <div className="text-black">
+            <div className="text-black  flex md:block flex-col justify-center items-center">
                 <p className="text-[25px] mb-4">Remove A Location</p>
                 <p className="text-black opacity-50 mb-4">Enter the unique Location ID</p>
                 <form onSubmit={handleSubmit}>
@@ -302,11 +302,13 @@ function EditView({mongoData})
                                 <div key={index} className="bg-white flex justify-between flex-row items-center text-black border-lightBlue border-2 rounded-md mb-4 last:mb-0 p-4 shadow-sm hover:bg-lightBlue duration-150 cursor-pointer">
                                     <span className="flex flex-row items-center">
                                         <img src="/img/building.png" className="border-2 border-lightBlue mr-4 rounded-full w-10 h-10 overflow-hidden bg-white"/>
-                                        <p className="text-[18px]">{d.title}</p> 
-                                        <p className="ml-8 text-black opacity-50    ">{d._id}</p>
-                                        <p className="ml-8 text-black opacity-50">{d.createdAt}</p>
+                                        <span className=" flex flex-col md:flex-row">
+                                            <p className="text-[18px]">{d.title}</p> 
+                                            <p className="text-[16px] md:text-base ml-0 md:ml-8 text-black opacity-50">{d._id}</p>
+                                        </span>
+                                        <p className="hidden md:block ml-8 text-black opacity-50">{d.createdAt}</p>
                                     </span>
-                                    <span className="flex flex-row gap-4">
+                                    <span className="flex flex-col md:flex-row gap-2 md:gap-4">
                                         {!editorLocation && <p className="py-2 px-4 border-2 border-blue text-white bg-blue hover:text-blue hover:bg-transparent rounded-full duration-150" onClick={()=>{setEditLocation(null);setEditLocation(d)}}>Edit</p>}
                                         <a href={`/location/${d._id}`}  className="py-2 px-4 border-2 border-blue text-blue bg-transparent hover:text-white hover:bg-blue rounded-full duration-150">Visit</a>
                                     </span>
@@ -320,15 +322,15 @@ function EditView({mongoData})
                     {(editorLocation != null) && <>
                     <div className="basis-1/2 h-[calc(50vh-220px)]">
                         <form onSubmit={handleSubmit}>
-                            <span className="flex flex-row gap-3">
-                                <input  className=" w-5/12 duration-150 text-blue text-[18px] rounded-md px-4 py-2 border-2 border-lightBlue border-solid active:border-blue" type="text" name="title" defaultValue={editorLocation.title} placeholder="Title" required />
-                                <input  className="w-1/12 duration-150 text-blue text-[18px] rounded-md px-4 py-2 border-2 border-lightBlue border-solid active:border-blue" type="text" name="_id" defaultValue={editorLocation._id} unselectable="on"  placeholder="Unique ID" required />
-                                <input  className=" w-2/12 duration-150 text-blue text-[18px] rounded-md px-4 py-2 border-2 border-lightBlue border-solid active:border-blue" type="text" name="tags" defaultValue={editorLocation.tags} placeholder="Search tags" required />
-                                <input  className="w-2/12 duration-150 text-blue text-[18px] rounded-md px-4 py-2 border-2 border-lightBlue border-solid active:border-blue"  type="number" name="lat" step="any" defaultValue={editorLocation.lat} placeholder="Latitude Coordinate" required/>
-                                <input  className="w-2/12 duration-150 text-blue text-[18px] rounded-md px-4 py-2 border-2 border-lightBlue border-solid active:border-blue"  type="number" name="long" step="any" defaultValue={editorLocation.long} placeholder="Longitude Coordinate"  required/>
+                            <span className="flex flex-col md:flex-row gap-3">
+                                <input  className="w-full md:w-5/12 duration-150 text-blue text-[18px] rounded-md px-4 py-2 border-2 border-lightBlue border-solid active:border-blue" type="text" name="title" defaultValue={editorLocation.title} placeholder="Title" required />
+                                <input  className="w-full md:w-1/12 duration-150 text-blue text-[18px] rounded-md px-4 py-2 border-2 border-lightBlue border-solid active:border-blue" type="text" name="_id" defaultValue={editorLocation._id} unselectable="on"  placeholder="Unique ID" required />
+                                <input  className="w-full md:w-2/12 duration-150 text-blue text-[18px] rounded-md px-4 py-2 border-2 border-lightBlue border-solid active:border-blue" type="text" name="tags" defaultValue={editorLocation.tags} placeholder="Search tags" required />
+                                <input  className="w-full md:w-2/12 duration-150 text-blue text-[18px] rounded-md px-4 py-2 border-2 border-lightBlue border-solid active:border-blue"  type="number" name="lat" step="any" defaultValue={editorLocation.lat} placeholder="Latitude Coordinate" required/>
+                                <input  className="w-full md:w-2/12 duration-150 text-blue text-[18px] rounded-md px-4 py-2 border-2 border-lightBlue border-solid active:border-blue"  type="number" name="long" step="any" defaultValue={editorLocation.long} placeholder="Longitude Coordinate"  required/>
                             </span>
                             
-                            <span className="flex flex-row gap-4 mt-4">
+                            <span className="flex flex-col md:flex-row gap-4 mt-4">
                                 <select  className="basis-1/2 duration-150 text-blue text-[18px] rounded-md px-4 py-2 border-2 border-lightBlue border-solid active:border-blue"  required name="type" defaultValue={"b"}>
                                     <option>Building</option>
                                 </select>
@@ -409,7 +411,7 @@ function LocationApproval()
             }
         })
     }
-
+    //console.log(ApprovalData)
     return (
         <> 
             {!ApprovalData &&  <p className="mt-4 text-[20px] text-blue"> Loading Data...</p>}
@@ -417,7 +419,8 @@ function LocationApproval()
                 <div className="basis-1/2 h-full">
                     <p className="text-[30px]">Approve a Location into the Production Environment</p>
                     <span className="bg-lightGrey block h-[calc(50vh-140px)] mt-8 overflow-y-scroll scrollbar-thin scrollbar-thumb-lightBlue">
-                        {ApprovalData.map((d, index) => {
+                        {(ApprovalData == [] && <p>No Approvals Requested</p> )}
+                        {(ApprovalData != []) && ApprovalData.map((d, index) => {
                             return (
                                 <div key={index} className="bg-white flex justify-between flex-row items-center text-black border-lightBlue border-2 rounded-md mb-4 last:mb-0 p-4 shadow-sm hover:bg-lightBlue duration-150 cursor-pointer">
                                     <span className="flex flex-row items-center">
@@ -483,22 +486,34 @@ export default function AdminDash({user})
         .then((data)=>{setApprovalNum(data)})
     }, [])
 
+    var toggleOpened = false
+
+    function toggleNav(e) // For the mobile menu
+    {
+        e.preventDefault()
+        const menuObjects = document.getElementsByClassName('mobile-open')
+        for(let i= 0; i < menuObjects.length; i++){menuObjects[i].style.display = (toggleOpened ? "none" : "list-item" )}
+        //console.log(menuObjects)
+        toggleOpened = !toggleOpened
+        //console.log(toggleOpened)
+    }
     return (
         <>
             <Popup />
-            <div className="h-[calc(100vh-130px)] mx-10 py-10 flex flex-row gap-10">
-                <div className="basis-1/4 bg-white shadow-sm rounded-2xl p-8">
+            <div className=" h-fit md:h-[calc(100vh-130px)] min-h-[620px] px-4 md:px-0 mx-0 md:mx-10 py-2 md:py-10 flex flex-col md:flex-row gap-5 md:gap-10">
+                <div className="basis-auto md:basis-1/4 bg-white shadow-sm rounded-2xl p-4 md:p-8">
                     <ul className="w-full flex flex-col gap-4">
-                        <li className="text-blue opacity-75 font-semibold w-full py-2 pl-4 bg-lightGrey rounded-full hover:bg-blue hover:text-white duration-150 cursor-pointer" ><a href="/admin">Dashboard</a></li>
-                        <li className="text-blue opacity-75 font-semibold w-full py-2 pl-4 bg-lightGrey rounded-full hover:bg-blue hover:text-white duration-150 cursor-pointer" ><a href="/admin?tab=add">Add a New Location</a></li>
-                        <li className="text-blue opacity-75 font-semibold w-full py-2 pl-4 bg-lightGrey rounded-full hover:bg-blue hover:text-white duration-150 cursor-pointer" ><a href="/admin?tab=approve">Approve a requested location</a></li>
-                        <li className="text-blue opacity-75 font-semibold w-full py-2 pl-4 bg-lightGrey rounded-full hover:bg-blue hover:text-white duration-150 cursor-pointer" ><a href="/admin?tab=edit&location=all">Edit a Location</a></li>
-                        <li className="text-blue opacity-75 font-semibold w-full py-2 pl-4 bg-lightGrey rounded-full hover:bg-blue hover:text-white duration-150 cursor-pointer"><a href="/admin?tab=remove">Remove a Location</a></li>
-                        <li className="text-red font-semibold w-full py-2 pl-4 bg-lightGrey rounded-full hover:bg-red hover:text-white duration-150 cursor-pointer">Logout</li>
+                        <li className="md:hidden text-blue opacity-75 font-semibold w-full py-2 pl-4 pr-4 bg-lightGrey rounded-full hover:bg-blue hover:text-white duration-150 cursor-pointer" onClick={toggleNav}><span className="flex justify-between"><span>Menu</span><span>&darr;</span></span></li>
+                        <li className="mobile-open hidden md:list-item text-blue opacity-75 font-semibold w-full py-2 pl-4 bg-lightGrey rounded-full hover:bg-blue hover:text-white duration-150 cursor-pointer" ><a href="/admin">Dashboard</a></li>
+                        <li className="mobile-open hidden md:list-item text-blue opacity-75 font-semibold w-full py-2 pl-4 bg-lightGrey rounded-full hover:bg-blue hover:text-white duration-150 cursor-pointer" ><a href="/admin?tab=add">Add a New Location</a></li>
+                        <li className="mobile-open hidden md:list-item text-blue opacity-75 font-semibold w-full py-2 pl-4 bg-lightGrey rounded-full hover:bg-blue hover:text-white duration-150 cursor-pointer" ><a href="/admin?tab=approve">Approve a requested location</a></li>
+                        <li className="mobile-open hidden md:list-item text-blue opacity-75 font-semibold w-full py-2 pl-4 bg-lightGrey rounded-full hover:bg-blue hover:text-white duration-150 cursor-pointer" ><a href="/admin?tab=edit&location=all">Edit a Location</a></li>
+                        <li className="mobile-open hidden md:list-item text-blue opacity-75 font-semibold w-full py-2 pl-4 bg-lightGrey rounded-full hover:bg-blue hover:text-white duration-150 cursor-pointer"><a href="/admin?tab=remove">Remove a Location</a></li>
+                        <li className="mobile-open hidden md:list-item text-red font-semibold w-full py-2 pl-4 bg-lightGrey rounded-full hover:bg-red hover:text-white duration-150 cursor-pointer"><a href="/">Logout</a></li>
                     </ul>
                 </div>
-                <div className=" basis-3/4 bg-white rounded-2xl">
-                    <div className={`p-8`}>
+                <div className="basis-auto md:basis-3/4 bg-white rounded-2xl shadow-sm">
+                    <div className={`p-4 md:p-8`}>
                         { (activeTab == 'dashboard' || !activeTab) && <DashView mongoData={mongoData} approvalNum={ApprovalNum} />}
                         { (activeTab == 'add') && <AddLocation /> }
                         { (activeTab == 'approve') && <LocationApproval />}
