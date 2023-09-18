@@ -31,13 +31,13 @@ export function MapView({ locationData })
         const mapFrame = generateMapFrame(lat, long);
         
         return (
-            <div className="md:basis-1/2 rounded-t-2xl md:rounded-2xl h-[60%] md:h-auto overflow-hidden border-2 border-lightBlue" dangerouslySetInnerHTML={{__html: mapFrame}}></div>
+            <div className="md:basis-1/2 md:rounded-2xl h-[80%] md:h-auto overflow-hidden md:shadow-md md:shadow-lightBlue" dangerouslySetInnerHTML={{__html: mapFrame}}></div>
         )   
     }
     else
     {
         return(
-            <div className="rounded-t-2xl md:rounded-3xl h-[60%] flex items-center justify-center md:h-auto overflow-hidden border-2 border-lightBlue" >
+            <div className="rounded-t-2xl md:rounded-3xl h-[60%] flex items-center justify-center md:h-auto overflow-hidden md:shadow-md md:shadow-lightBlue" >
                 <div className="flex flex-row items-center px-[calc(100% - 20px)] mt-8 justify-evenly min-h-[10px] w-full max-w-[320px]">
                     <span className="w-1 h-1 bg-blue rounded-[100%] animate-ping"></span>
                     <span className="w-1 h-1 bg-blue rounded-full animate-ping delay-300"></span>
@@ -105,10 +105,10 @@ export default function Location(props)
     return(
         <main className="bg-white">
             <Popup />
-            <Header searchBar={true}/>
-            <div className=" flex md:grid flex-col md:grid-cols-search w-[90%] md:w-[calc(100%-8rem)] h-[80vh] min-h-[620px] m-auto mt-5 mb-[calc(10vh-4rem)] md:mx-14 md:py-8 md:gap-8">
+            <Header absolute={true} searchBar={true}/>
+            <div className=" flex md:grid flex-col md:grid-cols-search w-full md:w-[calc(100%-8rem)] h-[90vh] md:h-[80vh] min-h-[620px] m-auto md:mt-2 mb-[calc(10vh-4rem)] md:mx-14 md:py-8 md:gap-8">
                 <MapView locationData={activeLocation} />
-                <div  className="md:basis-1/2 flex flex-col justify-between border-2 border-lightBlue mt-[-1.5rem] md:mt-auto p-5 md:p-8 md:h-[calc(80vh-4rem)] h-[45%] bg-white md:bg-transparent rounded-2xl md:rounded-3xl">
+                <div  className="md:basis-1/2 w-[95%] md:w-full flex flex-col shadow-md shadow-lightBlue justify-between mx-[2.5%] md:mx-0 mt-[-1.5rem] md:mt-auto p-5 md:p-8 md:h-[calc(80vh-4rem)] h-[45%] bg-white md:bg-transparent rounded-2xl md:rounded-3xl">
                     <LocationView activeLocation={activeLocation} pageURL = {asPath} />
                 </div>
             </div>

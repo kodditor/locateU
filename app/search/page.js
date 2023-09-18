@@ -126,10 +126,10 @@ export default function Search()
         
         <main className="bg-white">
             <Popup />
-            <Header />
-            <div className="flex md:grid flex-col md:grid-cols-search w-[90%] md:w-[calc(100%-8rem)] h-[80vh] min-h-[620px] m-auto mt-8 mb-[calc(10vh-4rem)] md:mx-14 md:py-8 md:gap-8">
+            <Header absolute={true} />
+            <div className="flex md:grid flex-col md:grid-cols-search w-full md:w-[calc(100%-8rem)] h-[90vh] md:h-[80vh] min-h-[620px] m-auto md:mt-2 mb-[calc(10vh-4rem)] md:mx-14 md:py-8 md:gap-8">
                 <MapView locationData={activeLocation} />
-                <div className=" flex flex-col justify-between border-2 border-lightBlue mt-[-1.5rem] md:mt-auto p-5 md:p-8 h-[45%] md:h-[calc(80vh-4rem)] bg-white md:bg-transparent  rounded-2xl md:rounded-3xl">
+                <div className=" flex flex-col justify-between shadow-md shadow-lightBlue w-[95%] mt-[-1.5rem] mx-[2.5%] md:mx-0 md:mt-auto p-5 md:p-8 h-[45%] md:h-[calc(80vh-4rem)] bg-white md:bg-transparent  rounded-2xl md:rounded-3xl">
                     <span className="flex flex-col overflow-y-auto">
                         <span>
                             <form action="/search" className="flex flex-col items-center">
