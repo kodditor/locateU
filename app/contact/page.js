@@ -5,6 +5,7 @@ import Footer from "../components/Footer";
 import Popup, { changePopup } from "../components/Popup";
 import { useState } from "react";
 import { currDate } from "../utils/custom-date";
+import Link from "next/link";
 
 export default function Contact()
 {
@@ -61,7 +62,7 @@ export default function Contact()
                 {responseSent && <div className="w-full">
                 <p className="text-blue w-full md:w-[calc(40%)] font-semibold text-[45px] md:text-[65px] md:ml-5">We value your input.</p>
                 <p className="text-black w-full md:w-[calc(70%)] font-semibold text-[18px] md:text-[35px] md:ml-5">Thank you for contacting us!</p>
-                <a href="/"><button className="bg-blue text-white w-fit mt-4 font-semibold px-10 py-3 rounded-full hover:bg-transparent hover:text-blue duration-150 border-2" >Back to Home</button></a>
+                <Link href="/"><button className="bg-blue text-white w-fit mt-4 font-semibold px-10 py-3 rounded-full hover:bg-transparent hover:text-blue duration-150 border-2" >Back to Home</button></Link>
                 </div>
                 }
                 <div className="w-0 md:w-full h-0 md:h-full bg-[url('/img/contact-bg.png')] rounded-2xl overflow-hidden">

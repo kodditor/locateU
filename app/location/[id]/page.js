@@ -3,6 +3,7 @@
 import Header from "../../components/Header"
 import Footer from "../../components/Footer"
 import Popup from "@/app/components/Popup";
+import Link from "next/link";
 
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from "react"
@@ -74,7 +75,7 @@ export function LocationView({ activeLocation, pageURL })
                     <p className="mt-1 md:mt-4">{activeLocation.description ? activeLocation.description: 'No description.'} </p>
                 </span>
                 <span className="flex flex-row mt-2 md:mt-0 md:gap-4">
-                    <a className="basis-3/5 md:basis-3/4" target="_blank" href={generateDirectionsLink(`${activeLocation.lat},${activeLocation.long}`)}><button className="bg-blue text-white text-[15px] md:text-base w-full flex flex-row-reverse md:gap-4 items-center font-semibold px-2 md:px-4 py-3 rounded-full hover:bg-transparent hover:text-blue duration-150 border-2" onMouseEnter={(e)=>{e.target.children[0].src='/img/arrow-t-r-b.png'}} onMouseLeave={(e)=>{e.target.children[0].src='/img/arrow-t-r-w.png'}}><img src="/img/arrow-t-r-w.png"  className="w-5 h-5 mr-2 md:mr-4" /> <span className="mr-2 md:mr-0">Get Directions</span></button></a>
+                    <Link className="basis-3/5 md:basis-3/4" target="_blank" href={generateDirectionsLink(`${activeLocation.lat},${activeLocation.long}`)}><button className="bg-blue text-white text-[15px] md:text-base w-full flex flex-row-reverse md:gap-4 items-center font-semibold px-2 md:px-4 py-3 rounded-full hover:bg-transparent hover:text-blue duration-150 border-2" onMouseEnter={(e)=>{e.target.children[0].src='/img/arrow-t-r-b.png'}} onMouseLeave={(e)=>{e.target.children[0].src='/img/arrow-t-r-w.png'}}><img src="/img/arrow-t-r-w.png"  className="w-5 h-5 mr-2 md:mr-4" /> <span className="mr-2 md:mr-0">Get Directions</span></button></Link>
                     <button className="basis-2/5 flex justify-center items-center opacity-70 text-black text-[15px] md:text-base font-medium hover:text-blue duration-150" onClick={() => shareText("https://locateu.vercel.app/location/" + activeLocation._id)}>Copy Link</button>
                 </span>
             </div>

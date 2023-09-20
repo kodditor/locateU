@@ -5,6 +5,7 @@ import Popup, { changePopup } from "../components/Popup";
 import { useState } from "react";
 import { currDate } from "../utils/custom-date";
 
+import Link from "next/link";
 
 export default function RequestALocation()
 {
@@ -65,7 +66,7 @@ export default function RequestALocation()
                 {responseSent && <div>
                 <p className="text-blue w-full md:w-[calc(50%)] font-semibold text-[45px] md:text-[65px] md:ml-5">We'll work on adding {response.location}.</p>
                 <p className="text-black w-full md:w-[calc(70%)] font-semibold text-[18px] md:text-[35px] md:ml-5">Thank you for helping us improve locateU!</p>
-                <a className="w-fit" href="/"><button className="bg-blue text-white mt-4 font-semibold px-10 py-3 rounded-full hover:bg-transparent hover:text-blue duration-150 border-2" >Back to Home</button></a>
+                <Link className="w-fit" href="/"><button className="bg-blue text-white mt-4 font-semibold px-10 py-3 rounded-full hover:bg-transparent hover:text-blue duration-150 border-2" >Back to Home</button></Link>
                 </div>
 
                 }
