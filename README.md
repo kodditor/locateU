@@ -25,7 +25,7 @@ To install LocateU locally, follow these steps:
 Once the application is running, users can access it through their web browser. They can then search for specific buildings or lecture halls, browse the interactive map, and access detailed location information as needed.
 
 ## Tech Stack
-- **Frontend**: Typescript with React, NextJS, TailwindCSS and the Google Maps Embed API
+- **Frontend**: Javascript with React, NextJS, TailwindCSS and the Google Maps Embed API
 - **Authentication**: Kinde Auth
 - **Backend** NextJS server actions and APIs
 - **Database**: MongoDB
