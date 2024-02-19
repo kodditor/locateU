@@ -1,34 +1,46 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# LocateU
 
-## Getting Started
+LocateU is a web application that facilitates educational institutions in providing accurate location information for their various buildings and lecture halls. With LocateU, users can easily find the exact locations of classrooms, offices, libraries, and other facilities within the campus.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+- **Accurate Location Information**: LocateU ensures precise location details for all buildings and lecture halls within the educational institution.
+- **User-Friendly Interface**: The interface is designed to be intuitive and easy to navigate, allowing users to quickly find the information they need.
+- **Search Functionality**: Users can search for specific buildings or lecture halls by name, making it convenient to locate them.
+- **Interactive Maps**: Interactive maps provide a visual representation of the campus layout, helping users to orient themselves and find their way around.
+- **Responsive Design**: LocateU is designed to be responsive and accessible across various devices, including desktops, tablets, and smartphones.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Installation
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+To install LocateU locally, follow these steps:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+1. Clone the repository: `git clone https://github.com/kodditor/locateU.git`
+2. Navigate to the project directory: `cd locateU`
+3. Install dependencies: `npm install`
+4. Build the project: `npm run build`
+5. Start the application: `npm start`
 
-## Learn More
+## Usage
 
-To learn more about Next.js, take a look at the following resources:
+Once the application is running, users can access it through their web browser. They can then search for specific buildings or lecture halls, browse the interactive map, and access detailed location information as needed.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Tech Stack
+- **Frontend**: Javascript with React, NextJS, TailwindCSS and the Google Maps Embed API
+- **Authentication**: Kinde Auth
+- **Backend** NextJS server actions and APIs
+- **Database**: MongoDB
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Contributing
 
-## Deploy on Vercel
+We welcome contributions from the community to help improve LocateU. If you'd like to contribute, please follow these guidelines:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. Fork the repository.
+2. Create a new branch for your feature or bug fix: `git checkout -b feature-name`
+3. Make your changes and commit them: `git commit -m 'Add new feature'`
+4. Push to the branch: `git push origin feature-name`
+5. Submit a pull request.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+## Contact
+
+If you have any questions or suggestions regarding LocateU, please feel free to contact me at [kobbyowusudarko@gmail.com](mailto:kobbyowusudarko@gmail.com).
